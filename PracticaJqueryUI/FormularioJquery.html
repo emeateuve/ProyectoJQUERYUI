@@ -4,16 +4,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="estilazo.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 
     <title>Formulario de reserva</title>
 </head>
 <style type="text/css"></style>
+<script>
+    $( function() {
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            show: {
+                effect: "blind",
+                duration: 500
+            },
+            hide: {
+                effect: "explode",
+                duration: 250
+            }
+        });
 
+        $( "#opener" ).on( "click", function() {
+            $( "#dialog" ).dialog( "open" );
+        });
+    } );
+    $( function() {
+        $( "#datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
+        $( "#locale" ).on( "change", function() {
+            $( "#datepicker" ).datepicker( "option",
+                $.datepicker.regional[ $( "es" ) ] );
+        });
+    } );
+</script>
 <body>
 <div class="container-fluid">
     <div class="row">
@@ -25,21 +51,68 @@
     </div>
     <div class="row">
         <div class="col-lg-10 col-sm-10 col-md-10 col-10 formulario text-center mt-2">
-            <h1>
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aperiam atque beatae
-                    eaque enim eveniet excepturi explicabo inventore natus nesciunt officia, quae quas, quod, reiciendis
-                    repellendus reprehenderit repudiandae ullam.
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Password</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
                 </div>
-                <div>Aliquid asperiores aspernatur eius laudantium magni maxime molestiae natus nemo numquam obcaecati.
-                    Architecto deserunt dignissimos doloremque eaque eius est facilis iste minus mollitia odio optio,
-                    possimus quis ratione totam ut!
-                </div></h1>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Address 2</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Ciudad</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="datepicker">Fecha</label>
+                        <input type="text" class="form-control" id="datepicker">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Check me out
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Aabrir dialogo</button>
+            </form>
         </div>
     </div>
 </div>
+<div id="dialog" title="Basic dialog" >
+    <p>Te has equivocado colegui</p>
+</div>
+<button id="opener" class="btn btn-secondary">Open Dialog</button>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </body>
+<script>
+    function activatePlacesSearch() {
+        var input = document.getElementById('inputCity');
+        var autocomplete = new google.maps.places.Autocomplete(input)
+    }
+</script>
+<!--GOOGLE PLACES-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTQAjGR3SgDEvJLwPFy2B3IhhfA1-huP0&libraries=places&callback=activatePlacesSearch"></script>
+
 </html>

@@ -6,6 +6,6 @@ body{
 .formulario{
     width: 100%;
     margin:auto;
-    background-color: red;
+    border: 1px solid black;
     height: auto;
 }
