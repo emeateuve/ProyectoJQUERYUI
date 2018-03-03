@@ -8,7 +8,9 @@ body{
     margin:auto;
     height: auto;
 }
-
+.ui-button{
+    width:45%;
+}
 .ui-controlgroup-vertical {
     width: 150px;
 }
@@ -22,11 +24,14 @@ body{
 .ui-controlgroup-horizontal .ui-spinner-input {
     width: 20px;
 }
-
+.ui-selectmenu-button.ui-button {
+    width:100% !important;
+}
 #car-type, #car-plazas{
-    width: 100%;
+    width: 100% !important;
 }
 .selectorFurgoneta, .selectorPlazas, .selectorTransmision{
     overflow: hidden !important;
+    width:100%;
 
 }

@@ -40,6 +40,13 @@
             showButtonPanel: true
 
         });
+        $("#datepicker1").datepicker({
+            numberOfMonths: 2,
+            showButtonPanel: true
+
+        });
+        $("#datepicker").datepicker("setDate", new Date());
+        $("#datepicker1").datepicker("setDate", new Date());
     });
     $(function ($) {
         $.datepicker.regional['es'] = {
@@ -61,10 +68,11 @@
         };
         $.datepicker.setDefaults($.datepicker.regional['es']);
         $("#furgoneta").selectmenu();
-        $( "#accordion" ).accordion({
+        $("#accordion").accordion({
             heightStyle: "content",
             collapsible: true
         });
+        $( document ).tooltip();
     });
 
     $(function () {
@@ -102,28 +110,28 @@
             <div class="col-lg-12 col-sm-12 col-md-12 col-12 text-center mt-2">
                 <form>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" title="Tu nombre. ¿Qué otra cosa esperas poner aquí?">
                             <label for="inputNombre">Nombre</label>
                             <input type="text" class="form-control" id="inputNombre" placeholder="Nombre...">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" title="Tus apellidos, porfavor">
                             <label for="inputApellidos">Apellidos</label>
                             <input type="text" class="form-control" id="inputApellidos"
                                    placeholder="Apellidos...">
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" title="Dirección de correo electrónico. Ejemplo: emeateuve@gmail.com">
                             <label for="inputEmail4">Email</label>
                             <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" title="Nombre de tu ciudad. El autocompletar te ayudará.">
                             <label for="inputCity">Ciudad</label>
                             <input type="text" class="form-control" id="inputCity">
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12" title="Dirección. Ejemplo: Sin nombre nº X">
                             <label for="inputCity">Dirección</label>
                             <label class="sr-only" for="inlineFormInputGroup">Dirección</label>
                             <div class="input-group mb-2">
@@ -143,11 +151,12 @@
             <div class="widget">
                 <fieldset>
                     <div class="form-row">
-                        <div class="controlgroup col-md-4">
+                        <div class="controlgroup col-md-6">
                             <div id="accordion">
-                                <h3>Furgoneta</h3>
-                                <div class="selectorFurgoneta">
+                                <h3 title="Elige una furgoneta de las listadas">Furgoneta</h3>
+                                <div class="selectorFurgoneta" >
                                     <select id="car-type">
+                                        <option disabled selected>Elige una furgoneta...</option>
                                         <option>Renault Transit</option>
                                         <option>Citroen Berlingo</option>
                                         <option>Fiat Ducato</option>
@@ -159,48 +168,23 @@
                                         <option>Nissan Cabstar E</option>
                                     </select>
                                 </div>
-                                <h3>Transmisión</h3>
+                                <h3 title="Selecciona el tipo de transmisión para tu fabulosa furgoneta; manual o automática.">Transmisión</h3>
                                 <div class="selectorTransmision">
                                     <label for="transmission-standard">Manual</label>
                                     <input type="radio" name="transmission" id="transmission-standard">
                                     <label for="transmission-automatic">Automático</label>
                                     <input type="radio" name="transmission" id="transmission-automatic">
                                 </div>
-                                <h3>Plazas</h3>
+                                <h3 title="Número de plazas que deseas que tenga tu furgoneta">Plazas</h3>
                                 <div class="selectorPlazas">
                                     <select id="car-plazas">
+                                        <option selected disabled>Número de plazas...</option>
                                         <option>5 plazas</option>
                                         <option>7 plazas</option>
                                         <option>+7 plazas</option>
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="controlgroup col-md-4">
-
-                            <div class="controlgroup-vertical">
-                                <select>
-                                    <option>Compact car</option>
-                                    <option>Midsize car</option>
-                                    <option>Full size car</option>
-                                    <option>SUV</option>
-                                    <option>Luxury</option>
-                                    <option>Truck</option>
-                                    <option>Van</option>
-                                </select>
-                                <label for="transmission-standard-v">Standard</label>
-                                <input type="radio" name="transmission-v" id="transmission-standard-v">
-                                <label for="transmission-automatic-v">Automatic</label>
-                                <input type="radio" name="transmission-v" id="transmission-automatic-v">
-                                <label for="insurance-v">Insurance</label>
-                                <input type="checkbox" name="insurance" id="insurance-v">
-                                <label for="vertical-spinner" class="ui-controlgroup-label"># of cars</label>
-                                <input id="vertical-spinner" class="ui-spinner-input">
-                                <button id="book">Book Now!</button>
-                            </div>
-                        </div>
-                        <div class="controlgroup col-md-4">
-
                         </div>
                     </div>
 
@@ -210,19 +194,30 @@
             </div>
         </div>
         <div id="tabs-3">
-            <div class="form-group col-md-2">
-                <label for="datepicker">Fecha</label>
-                <input type="text" class="form-control" id="datepicker">
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <fieldset>
+                        <h1>Fecha</h1>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <label for="datepicker">Desde...</label>
+                                <input type="text" class="form-control" id="datepicker" title="Fecha de inicio">
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <label for="datepicker">Hasta...</label>
+                                <input type="text" class="form-control" id="datepicker1" title="Fecha de fin">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
         </div>
-
-        <div id="dialog" title="Basic dialog">
-            <p>Te has equivocado colegui</p>
-        </div>
-        <button id="opener" class="btn btn-secondary">Open Dialog</button>
     </div>
 </div>
-
+<div id="dialog" title="Basic dialog">
+    <p>Te has equivocado colegui</p>
+</div>
+<button id="opener" class="btn btn-secondary">Open Dialog</button>
 </body>
 <script>
     function activatePlacesSearch() {
