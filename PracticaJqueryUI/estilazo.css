@@ -6,6 +6,27 @@ body{
 .formulario{
     width: 100%;
     margin:auto;
-    border: 1px solid black;
     height: auto;
+}
+
+.ui-controlgroup-vertical {
+    width: 150px;
+}
+.ui-controlgroup.ui-controlgroup-vertical > button.ui-button,
+.ui-controlgroup.ui-controlgroup-vertical > .ui-controlgroup-label {
+    text-align: center;
+}
+#car-type-button {
+    width: 100%;
+}
+.ui-controlgroup-horizontal .ui-spinner-input {
+    width: 20px;
+}
+
+#car-type, #car-plazas{
+    width: 100%;
+}
+.selectorFurgoneta, .selectorPlazas, .selectorTransmision{
+    overflow: hidden !important;
+
 }
