@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!--TEMAS-->
+    <link rel="stylesheet" href="temas/temados/jquery-ui.structure.css">
+    <link rel="stylesheet" href="temas/temados/jquery-ui.theme.css">
+    <link rel="stylesheet" href="temas/tematres/jquery-ui.structure.css">
+    <link rel="stylesheet" href="temas/tematres/jquery-ui.theme.css">
+    <link rel="stylesheet" href="temas/temauno/jquery-ui.structure.css">
+    <link rel="stylesheet" href="temas/temauno/jquery-ui.theme.css">
 
     <title>Formulario de reserva</title>
 </head>
@@ -31,6 +38,23 @@
 
         $("#opener").on("click", function () {
             $("#dialog").dialog("open");
+        });
+    });
+    $(function () {
+        $("#dialogoTemas").dialog({
+            autoOpen: false,
+            show: {
+                effect: "slide",
+                duration: 500
+            },
+            hide: {
+                effect: "explode",
+                duration: 250
+            }
+        });
+
+        $("#temas").on("click", function () {
+            $("#dialogoTemas").dialog("open");
         });
     });
 
@@ -96,6 +120,15 @@
             "direction": "vertical"
         });
     });
+
+    function cambiarEstilo(nuevoEstilo) {
+        console.log('Tema cambiado')
+        var body = $('body');
+        body.removeClass("temauno");
+        body.removeClass("temados");
+        body.removeClass("tematres");
+        body.addClass(nuevoEstilo);
+    }
 </script>
 <script>
     /* AUTOCOMPLETE */
@@ -266,12 +299,31 @@
                     <button id="opener" style="width: 100%;" type="submit" class="btn btn-primary">Enviar</button>
                     <div id="dialog" title="¡Formulario enviado!">
                         <p>Formulario enviado con éxito</p>
-                        <button style="width: 100%" class="btn btn-secondary" onclick="window.location.reload()">De acuerdo</button>
+                        <button style="width: 100%" class="btn btn-secondary" onclick="window.location.reload()">De
+                            acuerdo
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
         <div id="tabs-4">
+            <button id="temas" class="btn btn-primary">Abrir Temas</button>
+            <div id="dialogoTemas">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <button id="temauno" class="btn btn-secondary" onclick="cambiarEstilo('temauno')">Seleccionar Tema 1</button>
+                    </div>
+                    <br>
+                    <div class="col-md-4 col-12">
+                        <button id="temados" class="btn btn-secondary" onclick="cambiarEstilo('temados')">Seleccionar Tema 2</button>
+                    </div>
+                    <br>
+                    <div class="col-md-4 col-12">
+                        <button id="tematres" class="btn btn-secondary" onclick="cambiarEstilo('tematres')">Seleccionar Tema 3</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
 
         </div>
     </div>
